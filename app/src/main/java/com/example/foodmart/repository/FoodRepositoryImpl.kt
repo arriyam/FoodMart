@@ -4,7 +4,7 @@ import arrow.core.Either
 import arrow.core.right
 import com.example.foodmart.client
 import com.example.foodmart.jsonFormat
-import com.example.foodmart.model.FoodCategories
+import com.example.foodmart.model.FoodCategory
 import com.example.foodmart.model.FoodItem
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
@@ -24,7 +24,7 @@ class FoodRepositoryImpl : FoodRepository {
         jsonFormat.decodeFromString(data)
     }
 
-    override suspend fun getFoodCategories(): Either<Throwable, List<FoodCategories>> = Either.catch {
+    override suspend fun getFoodCategories(): Either<Throwable, List<FoodCategory>> = Either.catch {
         val data = client.get {
             url {
                 protocol = URLProtocol.HTTPS
